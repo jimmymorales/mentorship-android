@@ -48,12 +48,6 @@ class MainActivity : BaseActivity() {
                         atHome = true
                         return@OnNavigationItemSelectedListener true
                     }
-                    R.id.navigation_profile -> {
-                        replaceFragment(R.id.contentFrame, ProfileFragment.newInstance(),
-                                R.string.fragment_title_profile)
-                        atHome = false
-                        return@OnNavigationItemSelectedListener true
-                    }
                     R.id.navigation_relation -> {
                         replaceFragment(R.id.contentFrame, RelationPagerFragment.newInstance(),
                                 R.string.fragment_title_relation)
@@ -83,6 +77,10 @@ class MainActivity : BaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) =
             when (item.itemId) {
+                R.id.menu_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
                 R.id.menu_settings -> {
                     startActivity(Intent(this, SettingsActivity::class.java))
                     true

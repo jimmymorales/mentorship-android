@@ -4,12 +4,17 @@
     <item
         android:id="@+id/menu_refresh"
         app:showAsAction="never"
-        android:title="@string/refresh"/>
+        android:title="@string/refresh" />
+
+    <item
+        android:id="@+id/menu_profile"
+        android:icon="@drawable/ic_profile_black_24dp"
+        app:showAsAction="never"
+        android:title="@string/popup_menu_profile" />
 
     <item
         android:id="@+id/menu_settings"
         android:title="@string/popup_menu_settings"
         app:showAsAction="never"
-        android:menuCategory="container"
-        android:icon="@drawable/ic_settings_black_24dp"/>
+        android:icon="@drawable/ic_settings_black_24dp" />
 </menu>
