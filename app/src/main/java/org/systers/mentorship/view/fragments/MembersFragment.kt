@@ -1,10 +1,15 @@
 package org.systers.mentorship.view.fragments
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
@@ -14,21 +19,14 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.app.Activity.RESULT_OK
-import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.widget.SearchView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_members.*
 import org.systers.mentorship.R
 import org.systers.mentorship.models.User
-import org.systers.mentorship.remote.requests.PaginationRequest
 import org.systers.mentorship.utils.Constants
+import org.systers.mentorship.utils.Constants.AVAILABLE_TO_MENTOR_KEY
 import org.systers.mentorship.utils.Constants.FILTER_MAP
 import org.systers.mentorship.utils.Constants.FILTER_REQUEST_CODE
-import org.systers.mentorship.utils.Constants.ITEMS_PER_PAGE
 import org.systers.mentorship.utils.Constants.SORT_KEY
 import org.systers.mentorship.utils.EndlessRecyclerScrollListener
 import org.systers.mentorship.view.activities.FilterActivity
@@ -36,7 +34,6 @@ import org.systers.mentorship.view.activities.MainActivity
 import org.systers.mentorship.view.activities.MemberProfileActivity
 import org.systers.mentorship.view.adapters.MembersAdapter
 import org.systers.mentorship.viewmodels.MembersViewModel
-
 
 /**
  * The fragment is responsible for showing all the members of the system in a list format
@@ -58,7 +55,10 @@ class MembersFragment : BaseFragment() {
     private lateinit var rvAdapter: MembersAdapter
     private var isLoading = false
     private var isRecyclerView = false
-    private var filterMap = hashMapOf(SORT_KEY to SortValues.REGISTRATION_DATE.name)
+    private var filterMap = hashMapOf(
+        SORT_KEY to SortValues.REGISTRATION_DATE.name,
+        AVAILABLE_TO_MENTOR_KEY to "true"
+    )
 
     override fun getLayoutResourceId(): Int = R.layout.fragment_members
 
